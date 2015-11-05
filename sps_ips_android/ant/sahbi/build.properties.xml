@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE prop SYSTEM "../build.properties.dtd">
+<prop>
+  <tasks-username>SGA</tasks-username>
+  <application>
+ 		<target>android-7</target>
+  </application>
+  <build>
+    <process>
+      <location>E:/projects/Mobile/SPS_IPS/sps_ips/dist</location>
+      <compiler>
+      	<encoding>UTF-8</encoding>
+        <source>1.5</source>
+        <optimize>off</optimize>
+        <debug>on</debug>
+      </compiler>
+    </process>
+    <environment>DEV</environment>
+	 <jars>E:/projects/Mobile/SPS_IPS/sps_ips_android_utils/lib</jars>
+	 <sdk_path>E:/documents/Mobile/adt-bundle-windows-x86-20140321</sdk_path>
+  </build>
+</prop>

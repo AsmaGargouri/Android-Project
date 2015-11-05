@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">sps_ips_android</string>
+    <string name="action_settings">Settings</string>
+    <string name="chooseMapButton">Get map from gallery</string>
+    <string name="hello_world">Bienvenue!</string>
+    <string name="imageViewMainLogoDescription">Logo!</string>
+    <string name="collectData">Collect data</string>
+    <string name="Analysis">Analysis</string>
+    <string name="pin_img">ImageOfPinButton</string>
+    <string name="VisualizeData">Visualize data</string>
+    <string name="title_activity_itinerary">ItineraryActivity</string>
+    <string name="itenerary">Itinerary ! </string>
+    <string name="lines">Type number of lines : </string>
+    <string name="columns">Type number of columns :</string>
+    
+
+</resources>

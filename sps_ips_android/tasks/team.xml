@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<USERS>
+    <USER>
+        <USER_CODE>MG</USER_CODE>
+        <SKYPE_ID>guermazi-mohamed</SKYPE_ID>
+        <ROLE_IN_PRODUCT>QUALITY MANAGER</ROLE_IN_PRODUCT>
+        <FULL_NAME>Guermazi Mohamed</FULL_NAME>
+    </USER>
+    <USER>
+        <USER_CODE>ZS</USER_CODE>
+        <SKYPE_ID>ziedsaidi</SKYPE_ID>
+        <ROLE_IN_PRODUCT>TESTER</ROLE_IN_PRODUCT>
+        <FULL_NAME>Zied Saïdi</FULL_NAME>
+    </USER>
+    <USER>
+        <USER_CODE>ZSE</USER_CODE>
+        <SKYPE_ID>sebri.zouhaier</SKYPE_ID>
+        <ROLE_IN_PRODUCT>TESTER</ROLE_IN_PRODUCT>
+        <FULL_NAME>ZSE ZSE</FULL_NAME>
+    </USER>
+    <USER>
+        <USER_CODE>MM</USER_CODE>
+        <SKYPE_ID>mradmohamed</SKYPE_ID>
+        <ROLE_IN_PRODUCT>2st Level Support</ROLE_IN_PRODUCT>
+        <FULL_NAME>Mohamed Mrad</FULL_NAME>
+    </USER>
+    <USER>
+        <USER_CODE>YK</USER_CODE>
+        <SKYPE_ID>yassine.kaaniche</SKYPE_ID>
+        <ROLE_IN_PRODUCT>TESTER</ROLE_IN_PRODUCT>
+        <FULL_NAME>Kaaniche Yassine</FULL_NAME>
+    </USER>
+    <USER>
+        <USER_CODE>AC</USER_CODE>
+        <SKYPE_ID>achraf.chabchoub</SKYPE_ID>
+        <ROLE_IN_PRODUCT>ADMIN</ROLE_IN_PRODUCT>
+        <FULL_NAME>Chabchoub Achraf</FULL_NAME>
+    </USER>
+    <USER>
+        <USER_CODE>ABM</USER_CODE>
+        <SKYPE_ID>abderrahmen58</SKYPE_ID>
+        <ROLE_IN_PRODUCT>DESIGN</ROLE_IN_PRODUCT>
+        <FULL_NAME>Abderrahmen Messadi</FULL_NAME>
+    </USER>
+    <USER>
+        <USER_CODE>LBJ</USER_CODE>
+        <SKYPE_ID>lassaadbenjamaa</SKYPE_ID>
+        <ROLE_IN_PRODUCT>TESTER</ROLE_IN_PRODUCT>
+        <FULL_NAME>Ben Jamaa Lassaad</FULL_NAME>
+    </USER>
+    <USER>
+        <USER_CODE>SGA</USER_CODE>
+        <SKYPE_ID>gargouri.sahbi</SKYPE_ID>
+        <ROLE_IN_PRODUCT>TECH PROJ MGR</ROLE_IN_PRODUCT>
+        <FULL_NAME>Gargrouri Sahbi</FULL_NAME>
+    </USER>
+</USERS>

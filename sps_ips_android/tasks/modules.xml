@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MODULES>
+    <MODULE>
+        <NAME>ANT-BUILD</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME>ANT-CLIENT</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME>BIN-CLIENT</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME>FRAMEWORK</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME>DB</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME>METADATA</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - METADATA - SQL</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - METADATA - CONF</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - METADATA - RESOURCES</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - METADATA - TEMPLATES</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME>COMMON</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - COMMON - MANAGER</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - COMMON - TYPE</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - COMMON - MODEL</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME>SERVER</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - SERVER-BUSINESS</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - SERVER-DAO</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - SERVER-PROCESS</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME>WEB</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - WEB - ADMIN</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - WEB - PUBLIC</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - WEB - COMMON</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME>LEGACY</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME>TEST</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - TEST - SERVER</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - TEST - WEB</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - TEST - COMMON</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - TEST - SERVER</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME> - - TEST - ANT</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME>TASKS</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+    <MODULE>
+        <NAME>OTHER</NAME>
+        <DESCRIPTION/>
+        <PROJECT_ID>290</PROJECT_ID>
+    </MODULE>
+</MODULES>
