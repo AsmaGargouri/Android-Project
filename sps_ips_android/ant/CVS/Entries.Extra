@@ -1,0 +1,8 @@
+/.cvsignore////*////
+/.systemSettings.default////*////
+/build-cvs.xml////*////
+/build-pts.xml////*////
+/build.properties.dtd////*////
+/build.xml////*////
+D/ant-ext-resources////////
+D/sahbi////////

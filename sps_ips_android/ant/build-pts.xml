@@ -1,0 +1,128 @@
+<?xml version="1.0" ?>
+<!-- 	=================================
+        PTS application build file
+        Author : Zied Saidi
+        Last change by $Author: gargouris $
+        Creation: 26/06/2006
+        Update  : $Date: 2014/06/06 12:45:14 $
+        version : $Revision: 1.1 $
+        ================================= -->
+
+<project name="${ant.project.name}-pts" basedir="../">
+
+  <property name="tasks.file.name" value="${basedir}/tasks/${ant.project.name}-tasks.xml" />
+  <property name="tasks.dir" value="${basedir}/tasks/" />
+  <property name="accept.new.tasks.mesage" value="new tasks accepted" />
+  <property name="changes.file" value="${basedir}/changes.txt" />
+  <property name="pts4ant.lib" value="${basedir}/ant/ant-ext-resources/lib/pts4ant.jar" />
+
+  <!-- =================================
+          target: init pts
+          <path id="blowfish_lib">
+                   <pathelement path="${ant.ext.resources}/lib/Blowfish.jar" />
+          </path>
+         ================================= -->
+  <target name="init-pts" unless="pts.is.inited">
+          <echo>Initializing for pts...</echo>
+
+          <taskdef resource="conf/pts4ant.properties" classpath="${pts4ant.lib}" />
+
+          <property name="pts.is.inited" value="true" />
+
+  </target>
+  <!-- =================================
+          target: init pts
+  skypeId="if existe the message will be sent to group with this skype id else a new group will be created";
+          ================================= -->
+    <target name="message-install" depends="init,init-pts" description="send message about new installations">
+      <instantMessage
+          tasksDir="${tasks.dir}"
+          chatName="SPS_Mobile"
+          message="${message}"
+          roles ="ADMIN,DESIGN,DEVELOPER,PROJECT MANAGER,TECH PROJ MGR,QUALITY MANAGER,TESTER"
+          projectRootDir="${basedir}"
+          devname="${prop.tasks-username}"
+          module="INSTALL"
+      />
+	    <antcall target="_commit-for-pts">
+	      <param name="tasks.commit.comments" value="${accept.new.tasks.mesage}" />
+	    </antcall>
+    </target>
+
+   <!-- =================================
+      target: mytodos list of my delivered todos
+      ================================= -->
+  <target name="installer-mytodos" depends="init,init-pts" description="list of my todos">
+    <myTodos todosfile="${tasks.file.name}" devname="${prop.tasks-username}"/>
+  </target>
+
+   <!-- =================================
+      target: accept new Todos list of my delivered todos
+      ================================= -->
+  <target name="acceptNewTodos"  depends="init,init-pts" description="accept new todos">
+   <!-- TODO : commented because causing error :
+			   	sps_ips_android\ant\build-pts.xml:67: Problem: failed to create task or type acceptNewTodos
+				Cause: The name is undefined.
+				Action: Check the spelling.
+				Action: Check that any custom tasks/types have been declared.
+				Action: Check that any <presetdef>/<macrodef> declarations have taken place.
+   
+   	<acceptNewTodos
+      todosfile="${tasks.file.name}"
+      tasksdir="${tasks.dir}"
+      projectRootDir="${basedir}"
+      devname="${prop.tasks-username}"/>
+    <antcall target="_commit-for-pts">
+      <param name="tasks.commit.comments" value="${accept.new.tasks.mesage}" />
+    </antcall> --> 
+  </target>
+
+  <!-- =================================
+      target: setAvailableFromVersion
+      param: version
+      ================================= -->
+  <target name="_setAvailableFromVersion" depends="init,init-pts" >
+    <setAvailableFromVersion todosfile="${tasks.file.name}" version="${version}" projectRootDir="${basedir}"/>
+    <cvs command="-q commit -m 'setAvailableFromVersion ${version}' ${tasks.file.name} " />
+    <antcall target="_commit-for-pts">
+      <param name="tasks.commit.comments" value="setAvailableFromVersion ${version}" />
+    </antcall>
+  </target>
+
+  <!-- =================================
+      target: _generatePtsCode
+      param: version
+
+      ================================= -->
+  <target name="_generatePtsCode" depends="init,init-pts" >
+    <generatePtsCode productid="${product.id}" releasename="${release.name}" systemsetting="${user.name}" property="prop.pts.code"/>
+    <echo message="pts.code= ${prop.pts.code}"/>
+  </target>
+
+  <!-- =================================
+      target: _commit-tasks-file
+      param: tasks.commit.comments
+      ================================= -->
+  <target name="_commit-for-pts" depends="init-pts" >
+    <cvs command="-q commit -m '${tasks.commit.comments}' ${tasks.file.name} " />
+    <cvs command="-q commit -m '${tasks.commit.comments}' ${changes.file} " />
+  </target>
+
+  <!-- =================================
+      target: changes editor
+      param: subproject.cvs
+      ================================= -->
+  <target name="changes_show" depends="init-pts">
+    <echo message="${pts4ant.lib}"/>
+    <java classname="com.thinktank.pts.xml.ant.ChangesEditor" fork="true" failonerror="true">
+      <arg value="${ant.project.name}" />
+      <arg value="${prop.tasks-username}" />
+      <arg value="${tasks.file.name}" />
+      <arg value="${basedir}"/>
+      <sysproperty key="project.cvs" value="${subproject.cvs}" />
+      <classpath>
+        <pathelement location="${pts4ant.lib}" />
+      </classpath>
+    </java>
+  </target>
+</project>

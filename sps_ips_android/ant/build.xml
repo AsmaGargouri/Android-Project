@@ -1,0 +1,197 @@
+<?xml version="1.0" ?>
+<!-- 	=================================
+	riskanalysis application build file
+	Author : SEBRI Zouhaier
+	Last change by $Author: gargouris $
+	Creation: 03/12/2007
+	Update  : $Date: 2014/06/06 12:45:14 $
+	version : $Revision: 1.1 $
+	================================= -->
+
+<project name="sps_ips_android" basedir="../" default="help">
+
+    <import file="${basedir}/ant/build-cvs.xml"/>
+    
+  <property name="ant.dir" value="${basedir}/ant" />
+  <property name="ant.ext.resources" value="${ant.dir}/ant-ext-resources" />
+	<property name="ant.config.userdeffile" value="${ant.dir}/.systemSettings" />
+	<property name="ant.config.localproperties" value="build.properties.xml" />
+ 	<!-- =================================
+    target: before-init
+    ================================= -->
+	<target name="-before-init" unless="is.inited">
+		<echo>Initializing ...</echo>
+
+		<record action="start" name="build.log"/>
+		<!-- check first if user is set -->
+		<!-- Load personal settings -->
+		<property file="${ant.config.userdeffile}"/>
+		<condition property="user.notpresent">
+			<or>
+				<not>
+					<available file="${ant.config.userdeffile}" type="file"/>
+				</not>
+				<not>
+					<isset property="username"/>
+				</not>
+			</or>
+		</condition>
+	
+	</target>
+
+ 
+  	<!-- =================================
+    target: init-user-prompt
+    ================================= -->
+	<target name="-init-user-prompt" depends="-before-init" if="user.notpresent"  unless="is.inited">
+		<input addproperty="entered-username" message="Please enter your username? (eg:sebri, your userdir must be available ant/username/build.properties.xml)"/>
+		<property name="username" value="${entered-username}"/>
+	</target>
+    
+	<!-- =================================
+    target: init
+    initialising system with personal properties
+    ================================= -->
+	<target name="init" depends="-init-user-prompt"  unless="is.inited">
+		<echo message="your username=${username}"/>
+
+		<property name="userdir" value="${ant.dir}/${username}"/>
+		<condition property="user.conf.notpresent">
+			<not>
+				<available file="${userdir}/${ant.config.localproperties}" type="file"/>
+			</not>
+		</condition>
+		<fail if="user.conf.notpresent"> PLEASE configure your system!!
+            1. you have to provide a file named ${userdir}/${ant.config.localproperties} according to your username '${username}' specified in
+            ${basedir}/${config.userdeffile}
+            or try target 'usage' to get more information
+    </fail>
+		<!-- Note: personal settings file must be readed first! -->
+		<xmlproperty file="${userdir}/${ant.config.localproperties}" collapseAttributes="true"/>
+		<!-- with this line we can check that all properties are set -->
+		<xmlvalidate failonerror="true" file="${userdir}/${ant.config.localproperties}" warn="true"/>
+		<tstamp>
+			<format locale="fr,Fr" pattern="yyyyMMddhhmm" property="CURRENT_TIME"/>
+		</tstamp>
+		<antcall target="copy-jars"/>
+		<!--<property name="key.store" value="${prop.key.store}"/>
+		<property name="key.store.password" value="${prop.key.store.password}"/>
+		<property name="key.alias" value="${prop.key.store}"/>
+		<property name="key.alias.password" value="${prop.key.store.password}"/>
+		-->
+		<property name="is.inited" value="true"/>
+		<echo>Initializing DONE!</echo>
+	</target>
+		<!-- =================================
+      target: copy-jars
+      ================================= -->
+	<target name="copy-jars" description="copy jars to the application">
+		<echo message="." />
+		<echo message="Deleting jars from build dir" />
+		<delete>
+			<fileset dir="${ant.ext.resources}" >
+				<include name="*.jar" />
+			</fileset>
+		</delete>
+		<echo
+        message="Copying jars to the application " />
+		<!-- copying jars-->
+		<copy todir="${ant.ext.resources}" overwrite="false">
+			<fileset dir="${prop.build.jars}/ext/ant-ext-resources"/>
+		</copy>
+	</target>
+
+    <!-- if sdk.dir was not set from one of the property file, then
+         get it from the ANDROID_HOME env var.
+         This must be done before we load project.properties since
+         the proguard config can use sdk.dir -->
+    <property environment="env" />
+    <condition property="sdk.dir" value="${env.ANDROID_HOME}">
+        <isset property="env.ANDROID_HOME" />
+    </condition>
+
+    <!-- The project.properties file is created and updated by the 'android'
+         tool, as well as ADT.
+
+         This contains project specific properties such as project target, and library
+         dependencies. Lower level build properties are stored in ant.properties
+         (or in .classpath for Eclipse projects).
+
+         This file is an integral part of the build system for your
+         application and should be checked into Version Control Systems. -->
+    <loadproperties srcFile="project.properties" />
+
+    <!-- quick check on sdk.dir -->
+    <fail
+            message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through the ANDROID_HOME environment variable."
+            unless="sdk.dir"
+    />
+
+    <!-- Import the actual build file.
+
+         To customize existing targets, there are two options:
+         - Customize only one target:
+             - copy/paste the target into this file, *before* the
+               <import> task.
+             - customize it to your needs.
+         - Customize the whole content of build.xml
+             - copy/paste the content of the rules files (minus the top node)
+               into this file, replacing the <import> task.
+             - customize to your needs.
+
+         ***********************
+         ****** IMPORTANT ******
+         ***********************
+         In all cases you must update the value of version-tag below to read 'custom' instead of an integer,
+         in order to avoid having your file be overridden by tools such as "android update project"
+    -->
+    <!-- version-tag: 1 -->
+    <import file="${sdk.dir}/tools/ant/build.xml" />
+
+
+    <target
+        name="full-build-debug"
+        description="Build APK with developer settings i.e. logging on etc"  depends="init"> <!-- Name the build and give it a helpful description -->
+         <antcall target="-config" /> <!-- clean out the /bin/ directory and delete all temp and cached files -->
+        <antcall target="debug" /> <!-- Build a debug APK and place it in /bin/ -->
+    </target>
+    <target
+        name="full-build-release"
+        description="Builds the application. The generated apk file must be signed before it is published." depends="init"> <!-- Name the build and give it a helpful description -->
+     
+        <antcall target="-config" /> <!-- clean out the /bin/ directory and delete all temp and cached files -->
+        <antcall target="release" /> <!-- Build a debug APK and place it in /bin/ -->
+    </target>
+    
+        <!-- Copy Config.java to our source tree, replacing custom tokens with
+         values in build.properties. The configuration depends on "clean"
+         because otherwise the build system will not detect changes in the 
+         configuration. -->
+	<target name="-config" depends="clean">
+
+		<property name="config-target-path" value="${source.dir}/com/thinktank/spsips"/>
+
+		<!-- Copy the configuration file, replacing tokens in the file. -->
+		<!--
+		<copy file="config/Config.java" todir="${config-target-path}" 
+		      overwrite="true" encoding="utf-8">
+			<filterset>
+				<filter token="CONFIG.LOGGING" value="${prop.application.log.on}"/>
+				<filter token="CONFIG.SERVER.URL" value="${prop.application.services_url}"/>
+			</filterset>
+		</copy>
+		<copy file="config/globalSettings.js" todir="${asset.absolute.dir}/www/controllers" 
+		      overwrite="true" encoding="utf-8">
+			<filterset>
+				<filter token="CONFIG.SERVER.URL" value="${prop.application.services_url}"/>
+			</filterset>
+		</copy>	
+		-->	
+		<!-- Now set it to read-only, as we don't want people accidentally 
+		     editing the wrong one. NOTE: This step is unnecessary, but I do
+		     it so the developers remember that this is not the original file. 
+		<chmod file="${config-target-path}/Config.java" perm="-w"/>
+		<attrib file="${config-target-path}/Config.java" readonly="true"/>
+    -->
+	</target>
+</project>
